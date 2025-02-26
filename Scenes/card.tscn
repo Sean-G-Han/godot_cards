@@ -1,79 +1,52 @@
-[gd_scene load_steps=7 format=3 uid="uid://deotsx23pqaeq"]
+[gd_scene load_steps=2 format=3 uid="uid://drbys7t6w5r1e"]
 
-[ext_resource type="Texture2D" uid="uid://blubo5t6eqyys" path="res://Assets/cardBacks.png" id="1_c8syt"]
-[ext_resource type="Script" path="res://Scripts/card.gd" id="1_pef0v"]
+[ext_resource type="Script" path="res://Scenes/card.gd" id="1_yxfov"]
 
-[sub_resource type="Animation" id="Animation_7k3b2"]
-resource_name = "DeSelect"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CardBacks:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(52, 20), Vector2(52, 67)]
-}
+[node name="Card" type="Panel"]
+custom_minimum_size = Vector2(300, 450)
+offset_right = 300.0
+offset_bottom = 450.0
+pivot_offset = Vector2(150, 450)
+script = ExtResource("1_yxfov")
 
-[sub_resource type="Animation" id="Animation_7wupx"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CardBacks:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(52, 67)]
-}
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
 
-[sub_resource type="Animation" id="Animation_0gtgv"]
-resource_name = "Select"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CardBacks:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(52, 67), Vector2(52, 20)]
-}
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+color = Color(0, 1, 1, 1)
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_blu37"]
-_data = {
-"DeSelect": SubResource("Animation_7k3b2"),
-"RESET": SubResource("Animation_7wupx"),
-"Select": SubResource("Animation_0gtgv")
-}
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.95
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Card" type="Container"]
-custom_minimum_size = Vector2(105, 136)
-offset_right = 105.0
-offset_bottom = 136.0
-script = ExtResource("1_pef0v")
+[node name="ColorRect" type="ColorRect" parent="Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+mouse_filter = 1
 
-[node name="CardBacks" type="Sprite2D" parent="."]
-position = Vector2(52, 67)
-texture = ExtResource("1_c8syt")
-hframes = 4
-vframes = 5
+[node name="ColorRect2" type="ColorRect" parent="Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+mouse_filter = 1
 
-[node name="Anim" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_blu37")
-}
-
-[connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
