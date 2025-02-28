@@ -1,37 +1,54 @@
-[gd_scene load_steps=2 format=3 uid="uid://085m0pgrbo2t"]
+[gd_scene load_steps=6 format=3 uid="uid://085m0pgrbo2t"]
 
-[ext_resource type="PackedScene" uid="uid://drbys7t6w5r1e" path="res://Scenes/Card.tscn" id="1_jx4o4"]
+[ext_resource type="Script" path="res://Scripts/button.gd" id="1_a6a5h"]
+[ext_resource type="Script" path="res://Scripts/hand.gd" id="1_ve1u0"]
+[ext_resource type="Texture2D" uid="uid://1jy5hl7i36wv" path="res://icon.svg" id="1_wppqt"]
+[ext_resource type="Resource" uid="uid://c4n7rjvh44buo" path="res://Deck_Resources/DefaultDeck.tres" id="3_2wr03"]
+
+[sub_resource type="Theme" id="Theme_arn1j"]
 
 [node name="Board" type="Node"]
 
-[node name="UI" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI"]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+[node name="Screen" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -610.0
-offset_top = -300.0
-offset_right = 610.0
 grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/Screen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.859
+anchor_top = 0.741
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.431946
+offset_top = -0.16803
+grow_horizontal = 0
 grow_vertical = 0
+theme = SubResource("Theme_arn1j")
+text = "Activate"
+script = ExtResource("1_a6a5h")
 
-[node name="Card" parent="UI/HBoxContainer" instance=ExtResource("1_jx4o4")]
-layout_mode = 2
+[node name="Icon2" type="Sprite2D" parent="."]
+position = Vector2(832, 256)
+texture = ExtResource("1_wppqt")
 
-[node name="Card2" parent="UI/HBoxContainer" instance=ExtResource("1_jx4o4")]
-layout_mode = 2
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(320, 256)
+texture = ExtResource("1_wppqt")
 
-[node name="Card3" parent="UI/HBoxContainer" instance=ExtResource("1_jx4o4")]
-layout_mode = 2
+[node name="Hand" type="Node2D" parent="."]
+script = ExtResource("1_ve1u0")
+deck = ExtResource("3_2wr03")
 
-[node name="Card4" parent="UI/HBoxContainer" instance=ExtResource("1_jx4o4")]
-layout_mode = 2
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+metadata/_edit_lock_ = true
 
-[node name="Card5" parent="UI/HBoxContainer" instance=ExtResource("1_jx4o4")]
-layout_mode = 2
-
-[node name="Card6" parent="UI/HBoxContainer" instance=ExtResource("1_jx4o4")]
-layout_mode = 2
+[connection signal="pressed" from="CanvasLayer/Screen/Button" to="CanvasLayer/Screen/Button" method="_on_pressed"]

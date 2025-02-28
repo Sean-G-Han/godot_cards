@@ -1,0 +1,76 @@
+[gd_scene load_steps=3 format=3 uid="uid://drbys7t6w5r1e"]
+
+[ext_resource type="Script" path="res://Scripts/card.gd" id="1_yxfov"]
+[ext_resource type="Texture2D" uid="uid://csyo2br08kb3b" path="res://Assets/Sword.png" id="2_houwx"]
+
+[node name="Card" type="Panel"]
+custom_minimum_size = Vector2(200, 300)
+offset_right = 200.0
+offset_bottom = 300.0
+pivot_offset = Vector2(150, 450)
+script = ExtResource("1_yxfov")
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+color = Color(0.0291461, 9.86304e-07, 0.0243664, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.95
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 180)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer/ColorRect"]
+layout_mode = 2
+offset_right = 176.0
+offset_bottom = 176.0
+texture = ExtResource("2_houwx")
+expand_mode = 2
+
+[node name="Description_Box" type="ColorRect" parent="Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 1
+color = Color(0.585062, 0.585062, 0.585062, 1)
+
+[node name="Description" type="Label" parent="Control/VBoxContainer/Description_Box"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
+text = "HII"
+horizontal_alignment = 3
+autowrap_mode = 3
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

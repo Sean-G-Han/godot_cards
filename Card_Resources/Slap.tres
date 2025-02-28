@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=2 format=3 uid="uid://g62e04mr44nl"]
+
+[ext_resource type="Script" path="res://Scripts/Card/cardData.gd" id="1_e5p7i"]
+
+[resource]
+script = ExtResource("1_e5p7i")
+comboValue = 1
+name = "Slap"
+type = 8
+value = 0

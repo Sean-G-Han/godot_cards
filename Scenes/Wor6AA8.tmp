@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://085m0pgrbo2t"]
+
+[ext_resource type="PackedScene" uid="uid://83m7u1vywefa" path="res://card.tscn" id="1_rato3"]
+[ext_resource type="Script" path="res://Scenes/hand.gd" id="1_ve1u0"]
+
+[node name="Board" type="Node"]
+
+[node name="Hand" type="Node2D" parent="."]
+script = ExtResource("1_ve1u0")
+
+[node name="Card" parent="Hand" instance=ExtResource("1_rato3")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)

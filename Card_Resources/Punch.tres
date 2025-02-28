@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=2 format=3 uid="uid://60j4i45445h4"]
+
+[ext_resource type="Script" path="res://Scripts/Card/cardData.gd" id="1_0xifb"]
+
+[resource]
+script = ExtResource("1_0xifb")
+comboValue = 0
+name = "Punch"
+type = 8
+value = 0

@@ -18,3 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 Game="*res://Scripts/Global/Game.gd"
+SignalBus="*res://Scripts/Global/SignalBus.gd"
+
+[display]
+
+window/stretch/mode="viewport"
