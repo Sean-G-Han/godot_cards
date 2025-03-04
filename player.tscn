@@ -1,0 +1,71 @@
+[gd_scene load_steps=7 format=3 uid="uid://ce5s8vvyar13n"]
+
+[ext_resource type="Texture2D" uid="uid://1jy5hl7i36wv" path="res://icon.svg" id="1_v5hu8"]
+[ext_resource type="Script" path="res://defaultCharacter.gd" id="2_p366l"]
+
+[sub_resource type="Animation" id="Animation_qibid"]
+resource_name = "hit"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-100, 0), Vector2(100, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_t3x33"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_k2g56"]
+resource_name = "slap"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -100), Vector2(0, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hl5cg"]
+_data = {
+"RESET": SubResource("Animation_t3x33"),
+"hit": SubResource("Animation_qibid"),
+"slap": SubResource("Animation_k2g56")
+}
+
+[node name="Player" type="Node2D"]
+script = ExtResource("2_p366l")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hl5cg")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_v5hu8")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

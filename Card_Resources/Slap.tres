@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="CardData" load_steps=2 format=3 uid="uid://g62e04mr44nl"]
+[gd_resource type="Resource" script_class="CardData" load_steps=3 format=3 uid="uid://g62e04mr44nl"]
 
 [ext_resource type="Script" path="res://Scripts/Card/cardData.gd" id="1_e5p7i"]
+[ext_resource type="Script" path="res://Card_Resources/EffectScripts/print.gd" id="1_i742h"]
 
 [resource]
 script = ExtResource("1_e5p7i")
@@ -8,3 +9,5 @@ comboValue = 1
 name = "Slap"
 type = 8
 value = 0
+effectScript = ExtResource("1_i742h")
+animationName = "slap"

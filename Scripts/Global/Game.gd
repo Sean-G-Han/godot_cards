@@ -1,22 +1,36 @@
 extends Node
 
-var combos: Array[Card] = []
+const CENTER_SCREEN_X = 1152/2
+const CENTER_SCREEN_Y = 648/2
 
+const CARD_WIDTH = 118
+
+const DISCARD_PILE = Vector2(1090, 560)
+const DRAW_PILE = Vector2(60, 560)
+
+var moveArr: Array[CardData] = []
+var moveArrSize: int = 0:
+	set = playMove
+var isAnimationFinished: bool = true
+
+# Game Logic
 func _ready():
-	SignalBus.addCombo.connect(addCombo)
-	SignalBus.removeCombo.connect(removeCombo)
-	SignalBus.playCombo.connect(playCombo)
+	SignalBus.playCard.connect(addCardQueue)
+	SignalBus.finishAnimation.connect(removeCardQueue)
 
-func addCombo(card: Card) -> void:
-	combos.append(card)
+func addCardQueue(card: CardUI):
+	var cardData: CardData = card.cardData
+	moveArr.push_front(cardData)
+	moveArrSize += 1
+	print(moveArr)
 
-func removeCombo(card: Card) -> void:
-	combos.erase(card)
+func removeCardQueue():
+	moveArr.pop_back()
+	moveArrSize -= 1
+	print(moveArr)
 
-func playCombo() -> void:
-	if combos.size() > 0:
-		for card in combos:
-			SignalBus.emit_signal("playCard", card)
-			await(get_tree().create_timer(0.25).timeout)
-	else:
-		push_error("Combo Array Empty")
+func playMove(size):
+	moveArrSize = size
+	if moveArrSize != 0:
+		var animationName: String = moveArr.back().animationName
+		SignalBus.emit_signal("playAnimation", animationName) # Todo take animation from cardData

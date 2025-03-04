@@ -18,8 +18,9 @@ enum TYPE {
 @export var name: String = ""
 @export var type: TYPE = TYPE.TYPELESS
 @export var value: int = 0
-@export var image: Texture2D = null
-@export var effectScript: EffectScript = null  # Ensure only EffectBase resources are assigned
+@export var image: Texture2D
+@export var effectScript: Script  # Ensure only EffectBase resources are assigned
+@export var animationName: String = 'hit'
 
 func applyEffect() -> void:
 	if effectScript:

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chhpt45w27umh"
-path="res://.godot/imported/cardripFX_spritesheet.png-0bef075d4a2921d7c76ae84a3b0a296a.ctex"
+uid="uid://cufbbvb4j0gnt"
+path="res://.godot/imported/base 20.png-cb859f12fbb2ffad0520279d24b72eae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/cardripFX_spritesheet.png"
-dest_files=["res://.godot/imported/cardripFX_spritesheet.png-0bef075d4a2921d7c76ae84a3b0a296a.ctex"]
+source_file="res://Assets/base 20.png"
+dest_files=["res://.godot/imported/base 20.png-cb859f12fbb2ffad0520279d24b72eae.ctex"]
 
 [params]
 

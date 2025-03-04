@@ -1,8 +1,16 @@
 extends Node
 
-signal addCombo(card: Card)
-signal removeCombo(card: Card)
-signal playCombo()
-signal playCard(card: Card)
+# A card has been clicked
+signal playCard(card: CardUI)
 
-signal handReset()
+# A card is queued for "discarding"
+signal poolCard(card: CardUI)
+
+# Empty deck
+signal noCards(deck: Deck)
+
+# Plays attack animation
+signal playAnimation()
+
+# Tells game node that animation finished
+signal finishAnimation()
